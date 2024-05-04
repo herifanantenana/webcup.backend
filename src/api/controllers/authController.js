@@ -1,7 +1,8 @@
 class authController {
   async createUser(req, res) {
     try {
-      console.log(req.body);
+        
+      res.json(req.body);
     } catch (err) {
       console.error(err);
     }

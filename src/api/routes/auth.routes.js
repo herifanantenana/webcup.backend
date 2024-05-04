@@ -3,6 +3,6 @@ const router = express.Router();
 const authController = require("./../controllers/authController");
 
 //route pour la création de compte
-router.post("/login", authController.createUser);
+router.post("/signup", authController.createUser);
 
 module.exports = router;
