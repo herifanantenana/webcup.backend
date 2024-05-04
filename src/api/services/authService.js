@@ -13,7 +13,7 @@ class authService {
 
   async loginService(email, password) {
     try {
-      const user = await userModel.findOne({ email: clientEmail });
+      const user = await userModel.findOne({ email: email });
       const passwordValid = await authHelper.comparePassword(
         password,
         user.password
