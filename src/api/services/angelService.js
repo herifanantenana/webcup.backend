@@ -1,12 +1,9 @@
+const { models } = require("mongoose");
 const angel = require("../models/angelModel");
-const tracas = require("../models/tracasModel");
-const mongoose = require("mongoose");
-const TracasService = require("./tracasService");
 
 class AngelService {
-  constructor(modelAgenl, modelTracas) {
-    this.Angel = modelAgenl;
-    this.Tracas = modelTracas;
+  constructor(model) {
+    this.Angel = model;
   }
 
   async createNewAngel(name, picture, description, ) {
@@ -38,4 +35,4 @@ class AngelService {
   }
 }
 
-module.exports = new AngelService(angel, tracas);
+module.exports = new AngelService(angel);
