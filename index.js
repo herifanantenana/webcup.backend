@@ -1,6 +1,6 @@
-import connectDatabase from "./src/config/database.js";
-import { server, PORT } from "./src/server.js"
 // NOTE: ❕ import your socket.io file 
+const connectDatabase = require("./src/config/database.js");
+const { server, PORT } = require("./src/server.js");
 
 connectDatabase();
 

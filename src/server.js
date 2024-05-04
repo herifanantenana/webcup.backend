@@ -1,5 +1,5 @@
-import http from "node:http";
-import app from "./api/app.js";
+const http = require("http");
+const app = require("./api/app.js");
 
 // FIXME: 🚨 Add PORT "Port connection" to yout environment variable
 const PORT = process.env.PORT || 5000;
@@ -37,7 +37,7 @@ const listeningHandler = () => {
 server.on("error", errorHandler);
 server.on("listening", listeningHandler);
 
-export {
+module.exports = {
   server,
   PORT
-}
+};

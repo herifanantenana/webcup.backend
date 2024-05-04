@@ -1,16 +1,14 @@
-import express from "express";
-import helmet from "helmet";
-import cors from "cors";
-import compression from "compression";
-import dotenv from "dotenv";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
+const express = require("express");
+const helmet = require("helmet");
+const cors = require("cors");
+const compression = require("compression");
+const dotenv = require("dotenv");
+const path = require("path");
+
 
 // TODO: 🚧 add import routes
 
 dotenv.config();
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 app.use(helmet());
@@ -23,6 +21,10 @@ app.use("/images", express.static(path.join(__dirname, "../uploads/images")));
 app.use("/files", express.static(path.join(__dirname, "../uploads/files")));
 app.use("/videos", express.static(path.join(__dirname, "../uploads/videos")));
 
+app.get("/", (req, res) => {
+  res.send("Hello World Trimobe!")
+});
+
 // TODO: 🚧 add routes
 
-export default app;
+module.exports = app;
