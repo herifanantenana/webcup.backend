@@ -6,7 +6,7 @@ const tracasSchema = new Schema({
     trim: true,
     unique: true,
   },
-  categorie: {
+  category: {
     type: String,
     enum: ["course", "menage"],
     require: true

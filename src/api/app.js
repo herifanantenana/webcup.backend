@@ -25,6 +25,8 @@ app.get("/api", (req, res) => {
   res.send("Hello World Trimobe!")
 });
 
+app.use("/api/tracas", require("./routes/tracasRoute"));
+
 // TODO: 🚧 add routes
 
 module.exports = app;
