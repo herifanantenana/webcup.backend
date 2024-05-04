@@ -1,8 +1,8 @@
 const tracasModel = require("../models/tracasModel");
 
 class TracasService {
-  constructor(tracasModel) {
-    this.Tracas = tracasModel;
+  constructor(model) {
+    this.Tracas = model;
   }
 
   async createNewTracas(name, category, description) {
