@@ -1,4 +1,5 @@
 const userModel = require("./../models/userModel");
+const authHelper = require("./../helpers/authHelper");
 
 class authService {
   async signupService(userData) {
@@ -10,10 +11,17 @@ class authService {
     }
   }
 
-  async loginService(userData) {
+  async loginService(email, password) {
     try {
-      const newUser = new userModel({ ...userData });
-      return newUser.save();
+      const user = await userModel.findOne({ email: clientEmail });
+      const passwordValid = await authHelper.comparePassword(
+        password,
+        user.password
+      );
+
+      if (user && passwordValid) {
+        return user;
+      }
     } catch (err) {
       throw new Error(err);
     }
