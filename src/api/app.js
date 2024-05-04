@@ -21,7 +21,7 @@ app.use("/images", express.static(path.join(__dirname, "../uploads/images")));
 app.use("/files", express.static(path.join(__dirname, "../uploads/files")));
 app.use("/videos", express.static(path.join(__dirname, "../uploads/videos")));
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Hello World Trimobe!")
 });
 
