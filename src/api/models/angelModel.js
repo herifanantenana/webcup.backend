@@ -15,6 +15,15 @@ const angelSchema = new Schema({
     type: String,
     trim: true,
     unique: true,
+  },
+  tracasLists: {
+    type:[
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Tracas'
+      }
+    ],
+    default: []
   }
 }, {
   timestamps: true,
