@@ -5,7 +5,6 @@ const compression = require("compression");
 const dotenv = require("dotenv");
 const path = require("path");
 
-
 // TODO: 🚧 add import routes
 
 dotenv.config();
@@ -22,8 +21,10 @@ app.use("/files", express.static(path.join(__dirname, "../uploads/files")));
 app.use("/videos", express.static(path.join(__dirname, "../uploads/videos")));
 
 app.get("/api", (req, res) => {
-  res.send("Hello World Trimobe!")
+  res.send("Hello World Trimobe!");
 });
+
+app.use("/api/auth", require("./routes/auth.routes"));
 
 // TODO: 🚧 add routes
 
