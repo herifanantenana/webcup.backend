@@ -1,4 +1,3 @@
-const { models } = require("mongoose");
 const angel = require("../models/angelModel");
 
 class AngelService {

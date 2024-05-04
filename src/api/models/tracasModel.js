@@ -11,7 +11,7 @@ const tracasSchema = new Schema({
     enum: ["course", "menage"],
     require: true
   },
-  desciption: {
+  description: {
     type: String,
     trim: true,
     unique: true,

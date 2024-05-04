@@ -1,31 +1,28 @@
 const jwt = require("jsonwebtoken");
 
-class TokenHelper {
-  constructor(secretKey) {
-    this.secretKey = secretKey;
-  }
-
-  generateToken(user) {
-    try {
-      const { _id } = user;
-      const userId = _id;
-      const token = jwt.sign({ userId: `${userId}` }, this.secretKey, {
-        expiresIn: "365d",
-      });
-      return token;
-    } catch (err) {
-      console.error(err);
+function createToken(payload) {
+  try {
+    if (!payload) {
+      throw new Error("Payload not provided");
     }
-  }
-
-  verifyToken(token) {
-    try {
-      const decoded = jwt.verify(token, this.secretKey);
-      return decoded;
-    } catch (err) {
-      console.error(err);
-    }
+    return jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "365d" });
+  } catch (error) {
+    throw new Error(error);
   }
 }
 
-module.exports = TokenHelper;
+function verifyToken(token) {
+  try {
+    if (!token) {
+      throw new Error("Token not provided");
+    }
+    return jwt.verify(token, process.env.SECRET_KEY);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+module.exports = {
+  createToken,
+  verifyToken
+}

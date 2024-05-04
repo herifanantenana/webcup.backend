@@ -18,7 +18,7 @@ class AngelController {
       return res.status(201).json(newAngel);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "createNewAngel" });
+      res.status(500).json({ message: "Error createNewAngel" });
     }
   }
 

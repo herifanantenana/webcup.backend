@@ -1,40 +1,34 @@
-const userModel = require("./../models/userModel");
-const authHelper = require("./../helpers/authHelper");
+const UserService = require("./userService");
+const bcrypt = require("bcrypt");
 
-class authService {
-  async signupService(userData) {
+class AuthService {
+  async register(fullname, email, password) {
     try {
-      const newUser = new userModel({ ...userData });
-      return newUser.save();
-    } catch (err) {
-      throw new Error(err);
-    }
-  }
-
-  async loginService(email, password) {
-    try {
-      const user = await userModel.findOne({ email: email });
-      const passwordValid = await authHelper.comparePassword(
-        password,
-        user.password
-      );
-
-      if (user && passwordValid) {
-        return user;
+      const user = await UserService.getUserbyEmail(email);
+      if (user) {
+        throw new Error("User already exists");
       }
-    } catch (err) {
-      throw new Error(err);
+      return await UserService.createNewUser(fullname, email, password);
+    } catch (error) {
+      throw new Error(error);
     }
   }
 
-  async verifyEmailExistence(email) {
+  async login(email, password) {
     try {
-      const emailExist = await userModel.findOne({ email: email });
-      return emailExist;
-    } catch (err) {
-      throw new Error(err);
+      const user = await UserService.getUserbyEmail(email);
+      if (!user) {
+        throw new Error("User does not exist");
+      }
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        throw new Error("Invalid password");
+      }
+      return user;
+    } catch (error) {
+      throw new Error(error);
     }
   }
 }
 
-module.exports = new authService();
+module.exports = new AuthService();

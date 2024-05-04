@@ -5,8 +5,6 @@ const compression = require("compression");
 const dotenv = require("dotenv");
 const path = require("path");
 
-// TODO: 🚧 add import routes
-
 dotenv.config();
 
 const app = express();
@@ -24,10 +22,11 @@ app.get("/api", (req, res) => {
   res.send("Hello World Trimobe!");
 });
 
+// TODO: 🚧 add routes
+
 app.use("/api/tracas", require("./routes/tracasRoute"));
 app.use("/api/angel", require("./routes/angelRoute"));
-app.use("/api/auth", require("./routes/auth.routes"));
+app.use("/api/auth", require("./routes/authRoute"));
 
-// TODO: 🚧 add routes
 
 module.exports = app;
