@@ -4,9 +4,18 @@ class authService {
   async signupService(userData) {
     try {
       const newUser = new userModel({ ...userData });
-      return newUser ? newUser.save() : null;
+      return newUser.save();
     } catch (err) {
-      console.error(err);
+      throw new Error(err);
+    }
+  }
+
+  async verifyEmailExistence(email) {
+    try {
+      const emailExist = await userModel.findOne({ email: email });
+      return emailExist;
+    } catch (err) {
+      throw new Error(err);
     }
   }
 }
