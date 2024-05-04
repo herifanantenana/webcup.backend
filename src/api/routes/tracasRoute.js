@@ -7,8 +7,9 @@ router.post("/create", TracasController.createNewTracas);
 
 router.get("/get", TracasController.getAllTracas);
 
+router.get("/get/category/:category", TracasController.getAllTracasCategory);
+
 router.get("/get/:name", TracasController.getOneTracas);
 
-router.get("/get/category/:category", TracasController.getAllTracasCategory);
 
 module.exports = router;
