@@ -5,17 +5,6 @@ class TokenHelper {
     this.secretKey = secretKey;
   }
 
-  generateTokenAdmin(id) {
-    try {
-      const token = jwt.sign({ adminId: `${id}` }, this.secretKey, {
-        expiresIn: "365d",
-      });
-      return token;
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
   generateToken(user) {
     try {
       const { _id } = user;

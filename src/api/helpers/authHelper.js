@@ -8,7 +8,19 @@ class authHelper {
       const hashedPassword = await bcrypt.hash(password, salt);
       return hashedPassword;
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
+    }
+  }
+
+  async comparePassword(clientPassword, hashedPassword) {
+    try {
+      const passwordMatch = await bcrypt.compare(
+        clientPassword,
+        hashedPassword
+      );
+      return passwordMatch;
+    } catch (err) {
+      throw new Error(err);
     }
   }
 }
