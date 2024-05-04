@@ -10,6 +10,9 @@ class TracasController {
       } = req.body;
       console.log(req.body);
       const newTracas = await TracasService.createNewTracas(name, category, description);
+      if (!newTracas) {
+        return res.status(400).json({ message: "Error creating new tracas" });
+      }
       return res.status(201).json(newTracas);
     } catch (error) {
       console.error(error);

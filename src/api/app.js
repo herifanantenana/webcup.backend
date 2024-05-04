@@ -26,6 +26,7 @@ app.get("/api", (req, res) => {
 });
 
 app.use("/api/tracas", require("./routes/tracasRoute"));
+app.use("/api/angel", require("./routes/angelRoute"));
 
 // TODO: 🚧 add routes
 
