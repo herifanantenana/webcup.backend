@@ -18,7 +18,7 @@ class AngelController {
       return res.status(201).json(newAngel);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Error createNewAngel" });
+      res.status(500).json({ message: error.message });
     }
   }
 
@@ -29,7 +29,7 @@ class AngelController {
       return res.status(200).json(angel);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Error getOneAngel" });
+      res.status(500).json({ message: error.message });
     }
   }
 
@@ -39,7 +39,7 @@ class AngelController {
       return res.status(200).json(angels);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Error getAllAngels" });
+      res.status(500).json({ message: error.message });
     }
   }
 }

@@ -7,7 +7,7 @@ class AuthController {
       const { email, password } = req.body;
       const user = await AuthService.login(email, password);
       if (!user) {
-        return res.status(500).json({ message: "Error login" });
+        return res.status(500).json({ message: error.message });
       }
       const payload = { uid: user.id };
       const token = createToken(payload);
@@ -25,7 +25,7 @@ class AuthController {
       const { fullname, email, password } = req.body;
       const user = await AuthService.register(fullname, email, password);
       if (!user) {
-        return res.status(500).json({ message: "Error creating user" });
+        return res.status(500).json({ message: error.message });
       }
       const payload = { uid: user.id };
       const token = createToken(payload);
@@ -35,7 +35,7 @@ class AuthController {
       });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Error register" });
+      res.status(500).json({ message: error.message });
     }
   }
 }

@@ -27,7 +27,7 @@ class TracasController {
       return res.status(200).json(tracas);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Error getOneTracas" });
+      res.status(500).json({ message: error.message });
     }
   }
 
@@ -37,7 +37,7 @@ class TracasController {
       return res.status(200).json(tracas);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Error getAllTracas" });
+      res.status(500).json({ message: error.message });
     }
   }
 
@@ -48,7 +48,7 @@ class TracasController {
       return res.status(200).json(tracas);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Error getAllTracasCategory" });
+      res.status(500).json({ message: error.message });
     }
   }
 }
