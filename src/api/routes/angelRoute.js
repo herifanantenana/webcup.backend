@@ -6,8 +6,8 @@ const router = Router();
 
 router.post("/create", upload.single("picture"), AngelController.createNewAngel);
 
-router.get("/get", AngelController.getAllAngels);
+router.get("/", AngelController.getAllAngels);
 
-router.get("/get/:name", AngelController.getOneAngel);
+router.get("/:name", AngelController.getOneAngel);
 
 module.exports = router;
