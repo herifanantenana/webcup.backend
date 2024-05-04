@@ -9,7 +9,6 @@ class authController {
 
       //vérification de l' existence de l' utilisateur
       const emailExist = await authService.verifyEmailExistence(email);
-      //   if (!emailExist) return res.json("utilisateur n' existe pas");
 
       if (!emailExist) {
         const hashedPassword = await authHelper.hashPassword(password);
