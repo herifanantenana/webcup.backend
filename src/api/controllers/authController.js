@@ -13,7 +13,8 @@ class AuthController {
       const token = createToken(payload);
       return res.status(200).json({ 
         token, 
-        email: user.email 
+        email: user.email,
+        name: user.fullname
       });
     } catch (error) {
 
@@ -31,7 +32,8 @@ class AuthController {
       const token = createToken(payload);
       return res.status(201).json({ 
         token, 
-        email: user.email 
+        email: user.email,
+        name: user.fullname
       });
     } catch (error) {
       console.error(error);
