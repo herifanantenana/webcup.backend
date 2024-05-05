@@ -8,8 +8,14 @@ const path = require("path");
 dotenv.config();
 
 const app = express();
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
+
 app.use(helmet());
-app.use(cors());
 app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -17,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/images", express.static(path.join(__dirname, "../uploads/images")));
 app.use("/files", express.static(path.join(__dirname, "../uploads/files")));
 app.use("/videos", express.static(path.join(__dirname, "../uploads/videos")));
+
 
 app.get("/api", (req, res) => {
   res.send("Hello World Trimobe!");
